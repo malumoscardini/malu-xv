@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f0eb">
+  <meta name="description" content="Convite digital — Maria Luisa Arruda Moscardini, XV anos, 28.11.2026.">
+  <title>Maria Luisa · XV</title>
+
+  <!-- Free web fonts chosen to evoke the reference typography.
+       If you own the exact Amoresa / Edwardian / Pinyon files, replace the @import below
+       with local @font-face declarations. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Italianno&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ivory:#fbf7f3;
+      --cream:#f4e9df;
+      --paper:#fffaf7;
+      --blush:#ead1cf;
+      --blush-2:#dca8aa;
+      --wine:#6e3445;
+      --navy:#15233b;
+      --ink:#30232a;
+      --muted:#806c69;
+      --gold:#c9a66a;
+      --gold-dark:#9b7741;
+      --gold-pale:#e6d2aa;
+      --line:rgba(155,119,65,.34);
+      --shadow:0 28px 80px rgba(80,50,45,.12);
+      --serif:"Cormorant Garamond", Georgia, serif;
+      --script:"Great Vibes", "Brush Script MT", cursive;
+      --script2:"Italianno", "Brush Script MT", cursive;
+      --sans:"Montserrat", Arial, sans-serif;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:var(--ivory);
+      font-family:var(--serif);
+      overflow-x:hidden;
+    }
+    body.locked{overflow:hidden}
+    a{color:inherit}
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    ::selection{background:var(--gold-pale);color:var(--wine)}
+
+    .preloader{
+      position:fixed;inset:0;z-index:1000;
+      display:grid;place-items:center;
+      background:
+        radial-gradient(circle at 50% 42%,rgba(255,255,255,.9),transparent 34%),
+        var(--ivory);
+      transition:opacity .9s ease, visibility .9s ease;
+    }
+    .preloader.hide{opacity:0;visibility:hidden}
+    .preloader-card{text-align:center;letter-spacing:.18em}
+    .preloader-logo{width:112px;max-width:42vw;display:block;margin:0 auto 8px;filter:drop-shadow(0 6px 12px rgba(80,50,45,.10))}
+    .preloader-card .mini-xv{
+      font-family:var(--serif);font-size:20px;color:var(--gold-dark);
+      margin-bottom:8px
+    }
+    .preloader-card .line{width:110px;height:1px;background:var(--gold);margin:14px auto}
+    .preloader-card p{font:500 9px/1.6 var(--sans);text-transform:uppercase;color:var(--muted)}
+
+    .ornament{position:absolute;pointer-events:none;color:var(--gold);opacity:.75}
+    .ornament svg{display:block;width:100%;height:100%}
+
+    .hero{
+      min-height:100svh;position:relative;display:grid;place-items:center;text-align:center;
+      overflow:hidden;padding:70px 22px 90px;
+      background:
+        radial-gradient(circle at 50% 40%,rgba(255,255,255,.9),transparent 34%),
+        radial-gradient(circle at 10% 20%,rgba(234,209,207,.45),transparent 30%),
+        radial-gradient(circle at 90% 75%,rgba(201,166,106,.13),transparent 28%),
+        linear-gradient(180deg,#faf5f1 0%,#f6ece7 100%);
+    }
+    .hero:before,.hero:after{
+      content:"";position:absolute;inset:20px;border:1px solid var(--line);pointer-events:none;
+    }
+    .hero:after{inset:30px;border-color:rgba(155,119,65,.15)}
+    .hero-content{position:relative;z-index:2;max-width:900px}
+    .hero-logo{width:min(170px,38vw);height:auto;display:block;margin:0 auto 18px;filter:drop-shadow(0 10px 18px rgba(80,50,45,.12))}
+    .eyebrow{
+      font:500 10px/1.5 var(--sans);letter-spacing:.42em;text-transform:uppercase;color:var(--wine);
+      margin:0 0 25px;
+    }
+    .hero-script{
+      font:400 clamp(44px,8vw,92px)/.95 var(--script);color:var(--wine);margin:0 0 -6px;
+    }
+    .hero-name{
+      font:400 clamp(48px,9.5vw,108px)/.86 var(--serif);
+      letter-spacing:.02em;text-transform:uppercase;color:var(--ink);margin:0;
+    }
+    .hero-name span{display:block}
+    .hero-date{
+      display:flex;align-items:center;justify-content:center;gap:18px;
+      margin:34px 0 22px;font:500 13px var(--sans);letter-spacing:.34em;color:var(--gold-dark)
+    }
+    .hero-date i{display:block;width:52px;height:1px;background:var(--gold)}
+    .hero-quote{font:400 21px/1.45 var(--serif);color:var(--muted);font-style:italic;margin:0 auto 36px;max-width:610px}
+    .seal{
+      width:94px;height:94px;margin:0 auto 30px;border:1px solid var(--gold);border-radius:50%;
+      display:grid;place-items:center;position:relative;
+    }
+    .seal:before,.seal:after{content:"✦";position:absolute;color:var(--gold);font-size:11px}
+    .seal:before{top:7px}.seal:after{bottom:7px}
+    .seal span{font:400 42px/1 var(--serif);color:var(--wine)}
+    .cta{
+      display:inline-flex;align-items:center;gap:12px;border:1px solid var(--gold-dark);
+      background:rgba(255,255,255,.35);color:var(--wine);padding:14px 24px;text-decoration:none;
+      text-transform:uppercase;font:500 9px var(--sans);letter-spacing:.25em;transition:.35s ease;
+    }
+    .cta:hover{background:var(--wine);color:#fff;border-color:var(--wine);transform:translateY(-2px)}
+    .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font:500 8px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+    .scroll-hint:after{content:"";display:block;width:1px;height:36px;background:var(--gold);margin:10px auto 0}
+
+    .sparkle{position:absolute;width:4px;height:4px;background:var(--gold);transform:rotate(45deg);animation:twinkle 3s ease-in-out infinite}
+    @keyframes twinkle{0%,100%{opacity:.2;transform:rotate(45deg) scale(.7)}50%{opacity:1;transform:rotate(45deg) scale(1.4)}}
+    .s1{left:16%;top:28%}.s2{right:19%;top:22%;animation-delay:.8s}.s3{right:11%;bottom:27%;animation-delay:1.5s}.s4{left:12%;bottom:20%;animation-delay:2s}
+
+    main{position:relative}
+    section{position:relative;padding:110px 22px}
+    .section-inner{max-width:var(--max);margin:auto}
+    .chapter{
+      display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:18px;
+      font:500 9px var(--sans);letter-spacing:.35em;text-transform:uppercase;color:var(--gold-dark)
+    }
+    .chapter:before,.chapter:after{content:"";height:1px;width:50px;background:var(--line)}
+    .section-title{
+      margin:0;text-align:center;font:400 clamp(42px,6vw,70px)/.95 var(--serif);color:var(--ink);
+    }
+    .section-title em{font:400 .7em var(--script);color:var(--wine)}
+    .section-lead{max-width:620px;margin:20px auto 0;text-align:center;font:400 18px/1.65 var(--serif);color:var(--muted)}
+
+    .countdown-section{
+      background:
+        radial-gradient(circle at 15% 50%,rgba(201,166,106,.13),transparent 30%),
+        linear-gradient(180deg,#fffaf7,#f7eee9);
+      border-top:1px solid rgba(155,119,65,.14);border-bottom:1px solid rgba(155,119,65,.14)
+    }
+    .countdown{
+      max-width:880px;margin:42px auto 0;display:grid;grid-template-columns:repeat(4,1fr);
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+    }
+    .time-box{padding:30px 12px;text-align:center;border-right:1px solid var(--line)}
+    .time-box:last-child{border-right:0}
+    .time-num{display:block;font:400 clamp(44px,7vw,74px)/.9 var(--serif);color:var(--wine)}
+    .time-label{display:block;margin-top:10px;font:500 8px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+
+    .story{background:var(--ivory)}
+    .story-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:80px;align-items:center;margin-top:55px}
+    .portrait-frame{position:relative;padding:16px;background:#fff;box-shadow:var(--shadow);transform:rotate(-1deg)}
+    .portrait-frame:before{content:"";position:absolute;inset:8px;border:1px solid var(--line);z-index:1;pointer-events:none}
+    .portrait-placeholder{
+      aspect-ratio:4/5;display:grid;place-items:center;position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at 60% 30%,rgba(255,255,255,.7),transparent 18%),
+        linear-gradient(135deg,#e9d6d1,#f6e9e2 55%,#d7c1ad);
+    }
+    .portrait-placeholder:after{
+      content:"Substitua por uma foto da Maria Luisa";position:absolute;bottom:18px;left:18px;right:18px;
+      text-align:center;font:500 8px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:rgba(110,52,69,.75)
+    }
+    .cameo{
+      width:170px;height:210px;border:1px solid rgba(155,119,65,.55);border-radius:48% 48% 45% 45%;
+      background:radial-gradient(circle at 50% 35%,#fff8f0,#ead8cc);box-shadow:inset 0 0 0 9px rgba(255,255,255,.45);
+    }
+    .story-copy{padding-right:20px}
+    .story-copy .dropcap:first-letter{font:400 82px/.7 var(--serif);float:left;padding:8px 12px 0 0;color:var(--wine)}
+    .story-copy p{font:400 22px/1.72 var(--serif);color:var(--muted);margin:0 0 24px}
+    .signature{font:400 50px var(--script);color:var(--wine);margin-top:25px}
+
+    .day{background:var(--navy);color:#fff}
+    .day .chapter,.day .section-title{color:#f8eee7}
+    .day .section-lead{color:#d9cfc9}
+    .day .chapter:before,.day .chapter:after{background:rgba(230,210,170,.38)}
+    .day-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:stretch;margin-top:55px}
+    .watercolor{
+      min-height:520px;position:relative;overflow:hidden;border:1px solid rgba(230,210,170,.4);
+      background:#f7f1e8 url("assets/the-palace-watercolor.png") center/contain no-repeat;
+    }
+    .watercolor-caption{position:absolute;bottom:18px;left:20px;z-index:2;font:500 8px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#fff;opacity:.9}
+    .details{border:1px solid rgba(230,210,170,.35);padding:18px 28px}
+    .detail{display:grid;grid-template-columns:38px 1fr;gap:15px;padding:23px 0;border-bottom:1px solid rgba(230,210,170,.22)}
+    .detail:last-child{border-bottom:0}
+    .detail-icon{color:var(--gold-pale);font-size:17px;text-align:center;padding-top:3px}
+    .detail small{display:block;font:500 8px var(--sans);letter-spacing:.25em;text-transform:uppercase;color:#cdbfae;margin-bottom:6px}
+    .detail strong{font:400 22px/1.3 var(--serif);color:#fff}
+    .detail span{display:block;font:400 15px/1.5 var(--serif);color:#cfc5bd;margin-top:4px}
+    .maps{margin-top:28px;color:#fff;border-color:var(--gold-pale)}
+    .maps:hover{background:var(--gold-pale);color:var(--navy)}
+
+    .dress{background:#f8eee8}
+    .dress-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px;align-items:center;margin-top:55px}
+    .fashion-card{position:relative;min-height:540px;border:1px solid var(--line);background:linear-gradient(160deg,#efe1d9,#fffaf7 58%,#ead7d0);display:grid;place-items:center;overflow:hidden}
+    .fashion-card:before{content:"XV";font:400 220px/.8 var(--serif);color:rgba(201,166,106,.2);position:absolute;bottom:-20px;right:-5px}
+    .dress-silhouette{width:180px;height:400px;position:relative}
+    .dress-silhouette:before{content:"";position:absolute;top:0;left:68px;width:46px;height:68px;border-radius:50%;background:#ead1c8;border:1px solid var(--gold)}
+    .dress-silhouette:after{content:"";position:absolute;top:58px;left:35px;width:112px;height:310px;background:linear-gradient(145deg,#fff,#e9d7cf);clip-path:polygon(35% 0,65% 0,70% 18%,100% 100%,0 100%,30% 18%);border:1px solid rgba(155,119,65,.4)}
+    .dress-copy h3{font:400 42px var(--serif);margin:0 0 15px;color:var(--wine)}
+    .dress-copy p{font:400 20px/1.65 var(--serif);color:var(--muted);margin:0 0 26px}
+    .rule-list{border-top:1px solid var(--line)}
+    .rule-list div{padding:16px 0;border-bottom:1px solid var(--line);font:500 9px/1.6 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--wine)}
+    .rule-list span{display:block;font:400 17px/1.5 var(--serif);letter-spacing:0;text-transform:none;color:var(--muted);margin-top:4px}
+
+    .gift{background:var(--ivory)}
+    .gift-card{max-width:820px;margin:48px auto 0;text-align:center;border:1px solid var(--line);padding:55px 30px;background:rgba(255,255,255,.4);position:relative}
+    .gift-card:before,.gift-card:after{content:"✦";position:absolute;color:var(--gold);font-size:14px}.gift-card:before{top:16px;left:20px}.gift-card:after{bottom:16px;right:20px}
+    .gift-card p{font:400 21px/1.7 var(--serif);color:var(--muted);margin:0 auto 30px;max-width:650px}
+    .gift-note{font:500 8px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dark);margin-top:18px}
+
+    .rsvp{background:linear-gradient(145deg,#f3e5de,#fbf6f2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .rsvp-wrap{max-width:920px;margin:50px auto 0;display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:start}
+    .rsvp-note{padding:10px 0}
+    .rsvp-note p{font:400 20px/1.7 var(--serif);color:var(--muted)}
+    .deadline{font:500 9px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--wine);padding-top:18px}
+    form{background:rgba(255,255,255,.65);border:1px solid var(--line);padding:30px;box-shadow:var(--shadow)}
+    label{display:block;font:500 8px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--wine);margin:0 0 8px}
+    .field{margin-bottom:18px}
+    input,select{
+      width:100%;border:0;border-bottom:1px solid rgba(155,119,65,.38);background:transparent;
+      padding:12px 2px;color:var(--ink);outline:none;font:400 18px var(--serif)
+    }
+    input:focus,select:focus{border-color:var(--wine)}
+    .submit{width:100%;justify-content:center;background:var(--wine);color:#fff;border-color:var(--wine);margin-top:5px}
+    .submit:hover{background:var(--gold-dark);border-color:var(--gold-dark)}
+    .success{display:none;padding:22px;border:1px solid var(--line);background:rgba(255,255,255,.5);text-align:center}
+    .success.show{display:block}
+    .success strong{display:block;font:400 32px var(--serif);color:var(--wine);margin-bottom:6px}
+    .success span{font:400 16px var(--serif);color:var(--muted)}
+
+    .gallery{background:#fffaf7}
+    .gallery-grid{margin-top:55px;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .photo{
+      position:relative;overflow:hidden;min-height:300px;border:1px solid rgba(155,119,65,.22);
+      background:
+        radial-gradient(circle at 65% 30%,rgba(255,255,255,.9),transparent 22%),
+        linear-gradient(145deg,#e9d6d1,#f8ede7 55%,#d5c0ae);
+    }
+    .photo:nth-child(1){grid-column:span 7;min-height:500px}
+    .photo:nth-child(2){grid-column:span 5;min-height:500px;background:linear-gradient(145deg,#e8ded3,#f9f2ed)}
+    .photo:nth-child(3){grid-column:span 4}
+    .photo:nth-child(4){grid-column:span 4;background:linear-gradient(145deg,#d9c6ba,#f6e4df)}
+    .photo:nth-child(5){grid-column:span 4;background:linear-gradient(145deg,#ead5d0,#fffaf7)}
+    .photo:after{
+      content:"Foto · substitua por sua imagem";position:absolute;left:16px;bottom:14px;
+      font:500 7px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(110,52,69,.72)
+    }
+    .photo .frame{position:absolute;inset:14px;border:1px solid rgba(155,119,65,.32);pointer-events:none}
+    .photo .monogram{position:absolute;inset:0;display:grid;place-items:center;font:400 95px var(--script);color:rgba(110,52,69,.18)}
+
+    .final{
+      min-height:80svh;display:grid;place-items:center;text-align:center;padding:120px 22px;
+      background:
+        radial-gradient(circle at 50% 42%,rgba(255,255,255,.92),transparent 36%),
+        linear-gradient(180deg,#f8eee9,#f2e4de);
+    }
+    .final .rose{font-size:30px;color:var(--gold-dark);margin:30px 0}
+    .final-name{font:400 clamp(42px,8vw,88px)/.95 var(--serif);text-transform:uppercase;letter-spacing:.03em}
+    .final-xv{font:400 100px/.8 var(--script);color:var(--wine);margin:15px 0}
+    .final-date{font:500 10px var(--sans);letter-spacing:.36em;color:var(--gold-dark)}
+    footer{background:#18243a;color:#efe4d9;padding:45px 22px;text-align:center;border-top:1px solid rgba(230,210,170,.35)}
+    footer .brand{font:400 34px var(--serif);letter-spacing:.08em}
+    footer .xv{font:400 40px var(--script);color:var(--gold-pale)}
+    footer p{font:500 8px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:#bfb2a8;margin:12px 0 0}
+
+    .music{
+      position:fixed;right:18px;bottom:18px;z-index:40;width:48px;height:48px;border-radius:50%;
+      border:1px solid var(--gold);background:rgba(255,250,247,.92);color:var(--wine);box-shadow:0 12px 35px rgba(40,25,30,.15);
+      display:grid;place-items:center;font-size:16px;backdrop-filter:blur(8px)
+    }
+    .music.on{background:var(--wine);color:#fff}
+    .music-label{position:absolute;right:58px;white-space:nowrap;background:rgba(255,250,247,.92);border:1px solid var(--line);padding:7px 10px;font:500 7px var(--sans);letter-spacing:.16em;text-transform:uppercase;opacity:0;transform:translateX(8px);transition:.25s}
+    .music:hover .music-label{opacity:1;transform:translateX(0)}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .parallax{transform:translateY(0);transition:transform .2s linear}
+
+    .footer-logo{width:92px;display:block;margin:0 auto 10px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.18))}
+
+    @media(max-width:850px){
+      section{padding:84px 18px}
+      .story-grid,.day-grid,.dress-grid,.rsvp-wrap{grid-template-columns:1fr;gap:38px}
+      .story-copy{padding-right:0}
+      .watercolor{min-height:390px}
+      .fashion-card{min-height:390px}
+      .gallery-grid{grid-template-columns:1fr 1fr}
+      .photo:nth-child(n){grid-column:span 1;min-height:310px}
+      .photo:first-child{grid-column:span 2;min-height:420px}
+      .photo:nth-child(2){grid-column:span 1;min-height:420px}
+    }
+    @media(max-width:560px){
+      .hero{padding-top:55px}
+      .hero:before{inset:12px}.hero:after{inset:20px}
+      .hero-name{font-size:clamp(42px,13vw,64px)}
+      .hero-script{font-size:50px}
+      .hero-date{gap:9px;font-size:10px;letter-spacing:.24em}
+      .hero-date i{width:28px}
+      .hero-quote{font-size:17px;max-width:330px}
+      .seal{width:78px;height:78px}.seal span{font-size:35px}
+      .countdown{grid-template-columns:repeat(2,1fr)}
+      .time-box:nth-child(2){border-right:0}.time-box:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .story-copy p,.dress-copy p,.gift-card p,.rsvp-note p{font-size:18px}
+      .gallery-grid{display:grid;grid-template-columns:1fr}
+      .photo:nth-child(n){grid-column:span 1;min-height:360px}
+      .photo:first-child,.photo:nth-child(2){min-height:440px}
+      form{padding:22px}
+      .final{min-height:70svh}
+      .final-name{font-size:43px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+
+<body class="locked">
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-card">
+      <img class="preloader-logo" src="assets/maria-luisa-logo.png" alt="Monograma Maria Luisa">
+      <div class="line"></div>
+      <p>Uma noite · um capítulo · um sonho</p>
+    </div>
+  </div>
+
+  <button class="music" id="musicToggle" type="button" aria-label="Ativar ou desativar trilha sonora">
+    ♫
+    <span class="music-label">Trilha sonora</span>
+  </button>
+
+  <header class="hero" id="inicio">
+    <span class="sparkle s1"></span><span class="sparkle s2"></span><span class="sparkle s3"></span><span class="sparkle s4"></span>
+    <div class="ornament" style="width:210px;height:210px;left:-45px;top:20%;opacity:.18">
+      <svg viewBox="0 0 200 200" fill="none"><path d="M10 100C70 90 65 20 100 10M10 100C70 110 65 180 100 190M100 10C135 20 130 90 190 100M100 190C135 180 130 110 190 100" stroke="currentColor"/></svg>
+    </div>
+    <div class="ornament" style="width:210px;height:210px;right:-45px;bottom:16%;opacity:.18;transform:scaleX(-1)">
+      <svg viewBox="0 0 200 200" fill="none"><path d="M10 100C70 90 65 20 100 10M10 100C70 110 65 180 100 190M100 10C135 20 130 90 190 100M100 190C135 180 130 110 190 100" stroke="currentColor"/></svg>
+    </div>
+
+    <div class="hero-content">
+      <p class="eyebrow">O convite para uma noite de conto de fadas</p>
+      <img class="hero-logo" src="assets/maria-luisa-logo.png" alt="Monograma Maria Luisa">
+      <p class="hero-script">Era uma vez...</p>
+      <h1 class="hero-name"><span>Maria Luisa</span><span>Arruda Moscardini</span></h1>
+      <div class="hero-date"><i></i> 28 · 11 · 2026 <i></i></div>
+      <p class="hero-quote">Era uma vez, uma noite memorável e cheia de emoções.</p>
+      <a class="cta" href="#contagem" id="discover">Descubra mais <span>↓</span></a>
+    </div>
+    <div class="scroll-hint">Deslize para começar</div>
+  </header>
+
+  <main>
+    <section class="countdown-section" id="contagem">
+      <div class="section-inner">
+        <div class="chapter reveal">Capítulo I</div>
+        <h2 class="section-title reveal">O relógio do <em>baile</em></h2>
+        <p class="section-lead reveal">A contagem regressiva para a noite em que um novo capítulo começa.</p>
+        <div class="countdown reveal" aria-live="polite">
+          <div class="time-box"><span class="time-num" id="days">00</span><span class="time-label">Dias</span></div>
+          <div class="time-box"><span class="time-num" id="hours">00</span><span class="time-label">Horas</span></div>
+          <div class="time-box"><span class="time-num" id="minutes">00</span><span class="time-label">Min</span></div>
+          <div class="time-box"><span class="time-num" id="seconds">00</span><span class="time-label">Seg</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="historia">
+      <div class="section-inner">
+        <div class="chapter reveal">Capítulo II</div>
+        <h2 class="section-title reveal"><em>Era uma vez...</em></h2>
+        <div class="story-grid">
+          <div class="portrait-frame reveal">
+            <div class="portrait-placeholder">
+              <div class="cameo" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="story-copy reveal">
+            <p class="dropcap">Há anos atrás, em 14 de dezembro de 2011, nascia Maria Luisa, uma menina sorridente e delicada.</p>
+            <p>Agora, essa menina completa 15 e se torna uma mulher, tão linda e alegre. Você faz parte de sua história e é convidado para acompanhar essa história.</p>
+            <div class="signature">Maria Luisa</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="day" id="grande-dia">
+      <div class="section-inner">
+        <div class="chapter reveal">Capítulo III</div>
+        <h2 class="section-title reveal">O grande dia</h2>
+        <p class="section-lead reveal">Um endereço, uma data e uma noite preparada para ficar na memória.</p>
+        <div class="day-grid">
+          <div class="watercolor reveal parallax" aria-label="Ilustração em estilo aquarela do exterior de um palácio para eventos">
+            <span class="watercolor-caption">The Palace Eventos · São Carlos, SP</span>
+          </div>
+          <div class="details reveal">
+            <div class="detail">
+              <div class="detail-icon">✦</div><div><small>Data</small><strong>28.11.2026</strong></div>
+            </div>
+            <div class="detail">
+              <div class="detail-icon">◷</div><div><small>Horário</small><strong>20:30</strong></div>
+            </div>
+            <div class="detail">
+              <div class="detail-icon">⌖</div><div><small>Local</small><strong>The Palace Eventos</strong><span>São Carlos, SP</span></div>
+            </div>
+            <div class="detail">
+              <div class="detail-icon">◇</div><div><small>Endereço</small><strong>Passeio das Castanheiras</strong><span>Av. Parque Faber — 600</span></div>
+            </div>
+            <a class="cta maps" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=The+Palace+Eventos%2C+Passeio+das+Castanheiras%2C+Av.+Parque+Faber+600%2C+S%C3%A3o+Carlos%2C+SP">Ver localização ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dress" id="dress-code">
+      <div class="section-inner">
+        <div class="chapter reveal">Capítulo IV</div>
+        <h2 class="section-title reveal">Seu traje para o <em>baile</em></h2>
+        <div class="dress-grid">
+          <div class="fashion-card reveal"><div class="dress-silhouette" aria-hidden="true"></div></div>
+          <div class="dress-copy reveal">
+            <h3>Passeio completo</h3>
+            <p>Para esta noite especial, escolha um visual elegante, sofisticado e à altura de um grande baile. Pense em tecidos nobres, corte impecável e detalhes que expressem a sua personalidade.</p>
+            <div class="rule-list">
+              <div>Mulheres <span>Vestidos midi ou longos, tecidos fluidos, brilho delicado e acessórios sofisticados.</span></div>
+              <div>Homens <span>Traje social completo, terno ou costume, camisa e sapato social.</span></div>
+              <div>Paleta <span>Neutros, azul-marinho, vinho, rosa suave e detalhes metálicos são bem-vindos.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gift" id="presentes">
+      <div class="section-inner">
+        <div class="chapter reveal">Capítulo V</div>
+        <h2 class="section-title reveal">Um carinho para tornar<br>esta noite ainda mais <em>especial</em></h2>
+        <div class="gift-card reveal">
+          <p>Sua presença já significa muito para mim. Esta área foi preparada para receber, futuramente, a lista de presentes, Pix, loja ou sugestões escolhidas com carinho.</p>
+          <a class="cta" href="#" onclick="event.preventDefault(); alert('A lista de presentes será adicionada em breve.');">Acessar lista</a>
+          <div class="gift-note">P.S.: esta seção será alterada futuramente.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rsvp" id="confirmacao">
+      <div class="section-inner">
+        <div class="chapter reveal">Capítulo VI</div>
+        <h2 class="section-title reveal">Sua presença é o meu <em>maior presente</em></h2>
+        <div class="rsvp-wrap">
+          <div class="rsvp-note reveal">
+            <p>Para que tudo seja preparado com muito carinho, confirme sua presença até <strong>20.10.2026</strong>.</p>
+            <div class="deadline">Confirmações individuais · até 20 de outubro de 2026</div>
+          </div>
+          <div class="reveal">
+            <form id="rsvpForm">
+              <div class="field">
+                <label for="name">Nome</label>
+                <input id="name" name="name" autocomplete="name" required placeholder="Seu nome completo">
+              </div>
+              <div class="field">
+                <label for="phone">Telefone</label>
+                <input id="phone" name="phone" autocomplete="tel" inputmode="tel" required placeholder="(00) 00000-0000">
+              </div>
+              <div class="field">
+                <label for="attendance">Confirmação de presença</label>
+                <select id="attendance" name="attendance" required>
+                  <option value="" selected disabled>Selecione uma opção</option>
+                  <option>Sim, estarei presente</option>
+                  <option>Não poderei comparecer</option>
+                </select>
+              </div>
+              <button class="cta submit" type="submit">Confirmar presença ↗</button>
+            </form>
+            <div class="success" id="successMessage">
+              <strong>Que alegria!</strong>
+              <span>Sua resposta foi preparada e o WhatsApp será aberto para você enviar a confirmação.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="galeria">
+      <div class="section-inner">
+        <div class="chapter reveal">Capítulo VII</div>
+        <h2 class="section-title reveal">Alguns capítulos da minha <em>história</em></h2>
+        <p class="section-lead reveal">Um pequeno álbum para guardar os momentos que trouxeram Maria Luisa até aqui.</p>
+        <div class="gallery-grid">
+          <div class="photo reveal"><div class="frame"></div><div class="monogram">ML</div></div>
+          <div class="photo reveal"><div class="frame"></div><div class="monogram">XV</div></div>
+          <div class="photo reveal"><div class="frame"></div><div class="monogram">M</div></div>
+          <div class="photo reveal"><div class="frame"></div><div class="monogram">L</div></div>
+          <div class="photo reveal"><div class="frame"></div><div class="monogram">XV</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" id="final">
+      <div class="section-inner">
+        <div class="chapter reveal">O último capítulo ainda está por escrever</div>
+        <h2 class="section-title reveal" style="font-size:clamp(40px,7vw,78px)">Espero você para viver<br>esse sonho <em>comigo.</em></h2>
+        <div class="rose reveal">❦</div>
+        <div class="final-name reveal">Maria Luisa<br>Arruda Moscardini</div>
+        <div class="final-xv reveal">15 anos</div>
+        <div class="final-date reveal">28 · 11 · 2026</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <img class="footer-logo" src="assets/maria-luisa-logo.png" alt="Monograma Maria Luisa">
+    <div class="brand">Maria Luisa</div>
+    <div class="xv">XV</div>
+    <p>2026 · uma noite para guardar para sempre</p>
+  </footer>
+
+  <script>
+    // Countdown — the target is interpreted in the São Paulo local clock.
+    const target = new Date('2026-11-28T20:30:00-03:00').getTime();
+    const els = {
+      days: document.getElementById('days'),
+      hours: document.getElementById('hours'),
+      minutes: document.getElementById('minutes'),
+      seconds: document.getElementById('seconds')
+    };
+    function pad(n){ return String(Math.max(0,n)).padStart(2,'0'); }
+    function updateCountdown(){
+      const diff = target - Date.now();
+      if(diff <= 0){
+        els.days.textContent = els.hours.textContent = els.minutes.textContent = els.seconds.textContent = '00';
+        return;
+      }
+      const s = Math.floor(diff/1000);
+      els.days.textContent = pad(Math.floor(s/86400));
+      els.hours.textContent = pad(Math.floor((s%86400)/3600));
+      els.minutes.textContent = pad(Math.floor((s%3600)/60));
+      els.seconds.textContent = pad(s%60);
+    }
+    updateCountdown();
+    setInterval(updateCountdown,1000);
+
+    // Reveal-on-scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // Gentle parallax
+    const parallax = document.querySelector('.parallax');
+    window.addEventListener('scroll',()=>{
+      if(!parallax || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const r = parallax.getBoundingClientRect();
+      if(r.bottom > 0 && r.top < innerHeight){
+        const offset = (innerHeight/2 - (r.top+r.height/2))*0.025;
+        parallax.style.transform = `translateY(${offset}px)`;
+      }
+    },{passive:true});
+
+    // RSVP — local demo persistence. Replace the save handler with your backend endpoint
+    // (Formspree, Netlify Forms, Supabase, Firebase, etc.) when deploying.
+    const form = document.getElementById('rsvpForm');
+    const success = document.getElementById('successMessage');
+    const whatsappNumber = '5516996310067';
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      localStorage.setItem('maria-luisa-rsvp', JSON.stringify({...data, savedAt:new Date().toISOString()}));
+      const status = data.attendance === 'Sim, estarei presente' ? 'CONFIRMADA' : 'NÃO PODEREI COMPARECER';
+      const message = `✨ *Confirmação de presença — XV Maria Luisa*\n\n*Nome:* ${data.name}\n*Telefone:* ${data.phone}\n*Presença:* ${status}\n\n*Evento:* 28/11/2026 às 20:30\n*Local:* The Palace Eventos — São Carlos/SP`;
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      form.style.display='none';
+      success.classList.add('show');
+      window.open(url, '_blank', 'noopener');
+    });
+
+    // Optional procedural ambient soundtrack: no external audio file required.
+    let audioCtx, master, timer, playing=false;
+    function startAmbient(){
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      master = audioCtx.createGain();
+      master.gain.value=.035;
+      master.connect(audioCtx.destination);
+      const notes=[261.63,329.63,392.00,523.25];
+      let i=0;
+      function chord(){
+        if(!playing) return;
+        const now=audioCtx.currentTime;
+        const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+        osc.type='sine'; osc.frequency.value=notes[i%notes.length];
+        gain.gain.setValueAtTime(0,now);
+        gain.gain.linearRampToValueAtTime(.7,now+1.2);
+        gain.gain.exponentialRampToValueAtTime(.001,now+5.2);
+        osc.connect(gain); gain.connect(master); osc.start(now); osc.stop(now+5.3);
+        i++; timer=setTimeout(chord,1300);
+      }
+      chord();
+    }
+    function stopAmbient(){
+      playing=false;
+      clearTimeout(timer);
+      if(master){ master.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.5); }
+    }
+    document.getElementById('musicToggle').addEventListener('click',async function(){
+      if(!playing){
+        playing=true;
+        await (audioCtx?.resume?.() || Promise.resolve());
+        startAmbient();
+        this.classList.add('on');
+      }else{
+        stopAmbient();
+        this.classList.remove('on');
+      }
+    });
+
+    // Intro
+    window.addEventListener('load',()=>{
+      setTimeout(()=>{
+        document.getElementById('preloader').classList.add('hide');
+        document.body.classList.remove('locked');
+        document.querySelectorAll('.hero-content > *').forEach((el,i)=>{
+          el.animate(
+            [{opacity:0,transform:'translateY(18px)'},{opacity:1,transform:'translateY(0)'}],
+            {duration:850,delay:i*110,easing:'cubic-bezier(.2,.7,.2,1)',fill:'forwards'}
+          );
+        });
+      },850);
+    });
+  </script>
+</body>
+</html>
